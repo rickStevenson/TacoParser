@@ -1,6 +1,6 @@
-﻿namespace LoggingKata
+﻿namespace TacoParcer
 {
-    public interface ITrackable
+    public interface ILocation
     {
         string Name { get; set; }
         Point Location { get; set; }

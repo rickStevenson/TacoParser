@@ -4,19 +4,22 @@ using System.IO;
 using GeoCoordinatePortable;
 using System.ComponentModel.DataAnnotations;
 
-namespace LoggingKata
+namespace TacoParcer
 {
     class Program
     {
-        static readonly ILog logger = new TacoLogger();
+        static readonly ILog logger = new Logger();
         const string csvPath = "TacoBell-US-AL.csv";
 
         static void Main(string[] args)
         {
             logger.LogInfo("Log initialized");
+
             var lines = File.ReadAllLines(csvPath);
-            logger.LogInfo($"Lines: {lines[0]}");
-            var parser = new TacoParser();
+
+            logger.LogInfo($"Displaying first line: {lines[0]}");
+
+            var parser = new TacoBellParser();
             var locations = lines.Select(parser.Parse).ToArray();
 
             foreach (var location in locations)
@@ -24,8 +27,8 @@ namespace LoggingKata
                 Console.WriteLine($"{location.Name} {location.Location.Latitude} {location.Location.Longitude}");
             }
 
-            ITrackable taco1 = null;
-            ITrackable taco2 = null;
+            ILocation taco1 = null;
+            ILocation taco2 = null;
            
             double tacoDistance = 0;
 
@@ -54,7 +57,7 @@ namespace LoggingKata
                     }
                 }
             }
-            Console.WriteLine($"The two Taco Bells farthest apart are {taco1.Name} and {taco2.Name}, with a distance of {tacoDistance / 1000} kilometers.");
+            Console.WriteLine($"The two Taco Bells farthest apart are {taco1.Name} and {taco2.Name}, with a distance of {Math.Round(tacoDistance / 1000)} kilometers.");
         }
     }
 }

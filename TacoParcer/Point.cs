@@ -1,4 +1,4 @@
-﻿namespace LoggingKata
+﻿namespace TacoParcer
 {
     public struct Point
     {

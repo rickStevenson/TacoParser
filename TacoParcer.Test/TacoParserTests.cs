@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace LoggingKata.Test
+namespace TacoParcer.Test
 {
     public class TacoParserTests
     {
@@ -9,7 +9,7 @@ namespace LoggingKata.Test
         public void ShouldReturnNonNullObject()
         {
             //Arrange
-            var tacoParser = new TacoParser();
+            var tacoParser = new TacoBellParser();
             //Act
             var actual = tacoParser.Parse("34.073638, -84.677017, Taco Bell Acwort...");
             //Assert
@@ -35,9 +35,9 @@ namespace LoggingKata.Test
             //       represents a TacoBell location
 
             //Arrange
-            var tacoParser = new TacoParser();
+            var tacoParser = new TacoBellParser();
             //Act
-            ITrackable result = tacoParser.Parse(line); // Parse the line into an ITrackable object
+            ILocation result = tacoParser.Parse(line); // Parse the line into an ITrackable object
             double actual = result.Location.Longitude;  // Extract the Longitude from the Location property
             //Assert
             Assert.Equal(expected, actual);
@@ -56,9 +56,9 @@ namespace LoggingKata.Test
         public void ShouldParseLatitude(string line, double expected)
         {
             //Arrange
-            var tacoParser = new TacoParser();
+            var tacoParser = new TacoBellParser();
             //Act
-            ITrackable result = tacoParser.Parse(line);
+            ILocation result = tacoParser.Parse(line);
             double actual = result.Location.Latitude;
             //Assert
             Assert.Equal(expected, actual);

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace LoggingKata
+namespace TacoParcer
 {
-    public class TacoLogger : ILog
+    public class Logger : ILog
     {
         public void LogFatal(string log, Exception exception = null)
         {

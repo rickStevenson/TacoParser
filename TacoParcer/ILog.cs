@@ -1,5 +1,5 @@
 ﻿using System;
-namespace LoggingKata
+namespace TacoParcer
 {
     public interface ILog
     {
